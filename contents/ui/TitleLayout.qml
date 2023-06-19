@@ -173,7 +173,21 @@ GridLayout{
                 width: Text.ElideNone ? implicitWidth : -1
                 verticalAlignment: Text.AlignVCenter
 
-                text: existsWindowActive ? root.firstTitleText : root.fallBackText
+    text: {
+
+                        if (existsWindowActive == true) {
+                            if (root.firstTitleText == 'Default'){
+                                return "     ";
+                            } else {
+                                return root.firstTitleText;
+                            }
+                        }
+                        else {
+                            return "     ";
+                        }
+                      }
+
+//text: existsWindowActive ? root.firstTitleText : root.fallBackText
                 color: enforceLattePalette ? latteBridge.palette.textColor : theme.textColor
                 font.capitalization: plasmoid.configuration.capitalFont ? Font.Capitalize : Font.MixedCase
                 font.bold: plasmoid.configuration.boldFont
